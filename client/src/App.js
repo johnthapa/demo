@@ -18,13 +18,13 @@ class App extends React.Component{
     }
 
     getAllData() {
-      Axios.get('http://localhost:3001/').then((response) => {
+      Axios.get('https://server.codeconsciousness.com/').then((response) => {
           this.setState({ listing : response.data, mode: 'list', searchQuery: ''  });
       })
     }
 
     submitSearchQuery($type) {
-      Axios.post('http://localhost:3001/api/searchData',{
+      Axios.post('https://server.codeconsciousness.com/api/searchData',{
         query: this.state.searchQuery
       }).then((response) => {
          this.setState({ listing : response.data });
@@ -54,7 +54,7 @@ class App extends React.Component{
         latitude : this.state.latitude,
         url : this.state.url,
       }
-      Axios.post('http://localhost:3001/api/updateData',{
+      Axios.post('https://server.codeconsciousness.com/api/updateData',{
         data: data
       }).then((response) => {
           this.getAllData()
